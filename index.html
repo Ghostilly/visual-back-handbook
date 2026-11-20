@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Visual Back Handbook: your back, explained in 3D</title>
+<meta name="description" content="The big ideas from the best-selling back-pain books, shown in 3D. Discs, nerves, sciatica, stenosis, scans and flare-ups, in plain words. $39 founding price, one-time.">
+<meta property="og:title" content="The Visual Back Handbook">
+<meta property="og:description" content="Your back, explained in 3D. The big ideas from the best-selling back-pain books, in one organised library.">
+<meta property="og:image" content="img/S09_main_0145.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E13; --bg2:#10161D; --card:#141C25; --line:#223040;
+  --ink:#EEF2F5; --mute:#9AA8B5; --bone:#F1E6D2; --cyan:#5FD3E6; --cyan2:#2BB3CB; --amber:#F5A524;
+  --r:18px; --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+h1{font-size:clamp(38px,6.4vw,72px)}
+h2{font-size:clamp(30px,4.4vw,48px);margin-bottom:14px}
+h3{font-size:21px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.lede{font-size:clamp(18px,2.1vw,21px);color:var(--mute);max-width:640px}
+section{padding:88px 0}
+.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(10,14,19,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-family:Fraunces,serif;font-weight:700;font-size:19px;text-decoration:none}
+.brand small{display:block;font:700 10px/1 Inter,sans-serif;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;margin-bottom:3px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:#06222A;font-weight:700;font-size:17px;text-decoration:none;padding:16px 26px;border-radius:999px;transition:transform .15s,background .15s;box-shadow:0 10px 30px -10px rgba(95,211,230,.6)}
+.btn:hover{background:#7BE0F0;transform:translateY(-1px)}
+.btn.sm{padding:10px 18px;font-size:15px;box-shadow:none}
+.btn .p{opacity:.75;font-weight:600}
+.note{font-size:14px;color:var(--mute);margin-top:12px}
+
+/* hero */
+.hero{padding:56px 0 72px;position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero h1 em{font-style:normal;color:var(--bone)}
+.hero .lede{margin:20px 0 30px}
+.hero-art{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5}
+.hero-art img{width:100%;height:100%;object-fit:cover}
+.hero-art .tag{position:absolute;left:14px;bottom:14px;background:rgba(10,14,19,.8);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--mute)}
+.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:15px;color:var(--mute)}
+.ticks li::before{content:"✓ ";color:var(--cyan);font-weight:700}
+
+/* problem */
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.problem img{border-radius:var(--r);border:1px solid var(--line)}
+.problem p+p{margin-top:14px}
+.problem p{color:var(--mute)}
+.problem strong{color:var(--ink)}
+
+/* gallery strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.strip figure{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:1}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.strip figure:hover img{transform:scale(1.05)}
+.strip figcaption{display:none}
+
+/* sections list */
+.secs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:36px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 20px 22px}
+.sec .n{font:700 13px Inter;color:var(--cyan);letter-spacing:.1em}
+.sec h3{margin:6px 0 8px;font-size:18px}
+.sec p{font-size:14.5px;color:var(--mute);line-height:1.5}
+
+/* includes */
+.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px}
+.inc div{border-top:2px solid var(--cyan2);padding-top:16px}
+.inc b{display:block;font-size:17px;margin-bottom:6px}
+.inc span{font-size:15px;color:var(--mute)}
+
+/* compare table */
+.cmp{width:100%;border-collapse:separate;border-spacing:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:15.5px}
+.cmp th,.cmp td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{background:var(--card);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.cmp th:last-child{color:var(--cyan)}
+.cmp td:first-child{color:var(--mute);width:42%}
+.cmp td:last-child{color:var(--ink)}
+
+/* who */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.who>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.who h3{margin-bottom:12px}
+.who ul{list-style:none}
+.who li{padding:7px 0 7px 28px;position:relative;color:var(--mute);font-size:15.5px}
+.who .yes li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.who .no li::before{content:"—";position:absolute;left:0;color:var(--mute)}
+
+/* offer */
+.offer{background:linear-gradient(160deg,#122330 0%,#0D151C 60%);border:1px solid #2A4357;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.price{font-family:Fraunces,serif;font-size:76px;font-weight:700;line-height:1}
+.price small{font:600 17px Inter;color:var(--mute);margin-left:8px}
+.offer ul{list-style:none;margin:20px 0 0}
+.offer li{padding:6px 0 6px 28px;position:relative;font-size:16px}
+.offer li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.preorder{background:rgba(245,165,36,.09);border:1px solid rgba(245,165,36,.35);border-radius:14px;padding:16px 18px;font-size:15px;color:#F4D9A8;margin-top:22px}
+.preorder b{color:var(--amber)}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:28px}
+.limits div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;font-size:15.5px;color:var(--mute)}
+.limits b{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}
+.urgent{margin-top:16px;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;font-size:15px;color:var(--mute)}
+.urgent b{color:var(--ink)}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--cyan);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:10px;max-width:760px}
+
+footer{padding:44px 0 110px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+footer p+p{margin-top:8px}
+
+/* sticky mobile buy bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(10,14,19,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px}
+.bar span{font-size:14px;color:var(--mute)} .bar b{color:var(--ink);font-size:18px;display:block}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:860px){
+  section{padding:64px 0}
+  .hero{padding:28px 0 52px}
+  .hero .grid,.problem,.offer,.who{grid-template-columns:1fr}
+  .hero-art{aspect-ratio:16/10}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .offer{padding:28px 22px}
+  .price{font-size:62px}
+  .cmp td,.cmp th{padding:12px 12px;font-size:14.5px}
+  nav .btn{display:none}
+  .bar{display:flex}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#"><small>The Visual</small>Back Handbook</a>
+  <a class="btn sm buy" href="#offer">Get it · $39</a>
+</div></nav>
+
+<header class="hero"><div class="wrap grid">
+  <div>
+    <p class="eyebrow">Your back, explained in 3D</p>
+    <h1>Finally <em>see</em> what's going on inside your back.</h1>
+    <p class="lede">The big ideas from the best-selling back-pain books, shown in 3D and put in order: discs, nerves, sciatica, stenosis, your scan report and why pain flares. In plain words, so it finally makes sense.</p>
+    <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
+    <p class="note">One-time payment. Founding price.</p>
+    <ul class="ticks"><li>3D lessons</li><li>Replayable comparisons</li><li>Printable summary sheets</li><li>Questions for your doctor</li></ul>
+  </div>
+  <div class="hero-art reveal">
+    <img src="img/S09_main_0145.jpg" alt="3D view of the lower spine with the discs between the vertebrae">
+    <span class="tag">Rendered for the handbook</span>
+  </div>
+</div></header>
+
+<section class="alt"><div class="wrap problem">
+  <div class="reveal">
+    <p class="eyebrow">Sound familiar?</p>
+    <h2>You've been told what's wrong. Nobody showed you.</h2>
+    <p>Maybe a scan said <strong>"disc bulge"</strong> or <strong>"degeneration"</strong>. Maybe you were told you have <strong>sciatica</strong> or <strong>spinal stenosis</strong>. Maybe sitting helps, or walking hurts, and you can't work out why.</p>
+    <p>The answers are out there, scattered across thick books and a hundred different videos. It's not your fault it doesn't add up: almost nobody gets to <strong>see</strong> it.</p>
+    <p>The Visual Back Handbook puts the whole map in one place, in order, in 3D.</p>
+  </div>
+  <img class="reveal" src="img/S05_main_0103.jpg" alt="Glass body showing the spine and pelvis inside" loading="lazy">
+</div>
+<div class="wrap"><div class="strip">
+  <figure class="reveal"><img src="img/S07_main_0206.jpg" alt="A disc seen from above" loading="lazy"><figcaption>Inside a disc</figcaption></figure>
+  <figure class="reveal"><img src="img/S14_main_0155.jpg" alt="Nerves leaving the spinal canal" loading="lazy"><figcaption>Nerve roots</figcaption></figure>
+  <figure class="reveal"><img src="img/S13_ax_0124.jpg" alt="Cross-section of the spinal canal" loading="lazy"><figcaption>The canal</figcaption></figure>
+  <figure class="reveal"><img src="img/S21_main_0274.jpg" alt="Two views of the lower spine and pelvis" loading="lazy"><figcaption>Side by side</figcaption></figure>
+</div></div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">What's inside</p>
+  <h2>11 sections. The whole map, in order.</h2>
+  <p class="lede">Each section starts with a short "map" lesson, then goes deeper.</p>
+  <div class="secs">
+    <div class="sec reveal"><span class="n">01</span><h3>Understanding the spine</h3><p>The lumbar spine in 3D, how the pelvis and spine move together, what "normal" variation looks like.</p></div>
+    <div class="sec reveal"><span class="n">02</span><h3>Discs, nerves and muscles</h3><p>Inside a disc, nerve roots and the sciatic nerve, the muscles and ligaments around your spine.</p></div>
+    <div class="sec reveal"><span class="n">03</span><h3>Everyday back mechanics</h3><p>Why position changes symptoms, load and recovery, what stiffness is (and isn't).</p></div>
+    <div class="sec reveal"><span class="n">04</span><h3>Sitting, standing and walking</h3><p>What actually changes when you sit, stand all day, or walk with leg symptoms.</p></div>
+    <div class="sec reveal"><span class="n">05</span><h3>Bending and lifting</h3><p>Hip hinge vs rounding: what the evidence says. Lifting myths. Getting out of bed and the car.</p></div>
+    <div class="sec reveal"><span class="n">06</span><h3>Disc pain and sciatica</h3><p>Bulge, protrusion, herniation: the words explained. Why discs irritate nerves, and what usually happens over time.</p></div>
+    <div class="sec reveal"><span class="n">07</span><h3>Spinal stenosis</h3><p>What narrowing looks like, why walking and standing matter, and the treatment options explained in a balanced way.</p></div>
+    <div class="sec reveal"><span class="n">08</span><h3>Why pain varies</h3><p>Pain isn't a damage meter. Sensitivity, sleep, stress and flare-ups.</p></div>
+    <div class="sec reveal"><span class="n">09</span><h3>Common misconceptions</h3><p>"Slipped disc", "bad posture", "my scan shows degeneration", "rest until it stops hurting".</p></div>
+    <div class="sec reveal"><span class="n">10</span><h3>Activity and rehabilitation</h3><p>What guidelines recommend, how graded activity works, and working with a physiotherapist.</p></div>
+    <div class="sec reveal"><span class="n">11</span><h3>Warning signs</h3><p>Red flags in plain language, GP vs urgent care, and how to prepare for an appointment.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">In every lesson</p>
+  <h2>More than a video you watch once.</h2>
+  <div class="inc">
+    <div class="reveal"><b>The full 3D lesson</b><span>Longer and more detailed than anything on YouTube, with chapters.</span></div>
+    <div class="reveal"><b>3D comparison loops</b><span>Short side-by-side clips you can replay, like the canal bending forward vs back.</span></div>
+    <div class="reveal"><b>A one-page summary sheet</b><span>Printable PDF: key ideas, a labelled 3D image, glossary terms and sources.</span></div>
+    <div class="reveal"><b>Questions for your clinician</b><span>Take them to your doctor or physio and have a better conversation.</span></div>
+    <div class="reveal"><b>References</b><span>Every claim tagged established, likely or uncertain.</span></div>
+  </div>
+  <h3 style="margin-top:48px">Plus, for the whole library</h3>
+  <div class="inc">
+    <div class="reveal"><b>Scan report decoder</b><span>What common MRI words mean, and how often they show up in people with no pain at all.</span></div>
+    <div class="reveal"><b>Visual glossary</b><span>Around 80 terms, each with a 3D image.</span></div>
+    <div class="reveal"><b>Symptom pattern diary</b><span>Printable: sitting, standing, walking, bending, time of day.</span></div>
+    <div class="reveal"><b>Red-flag card</b><span>Printable: when to get help the same day.</span></div>
+    <div class="reveal"><b>Free updates to V1</b><span>Lessons are updated when the evidence changes.</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Why not just watch YouTube?</p>
+  <h2>Free videos answer one question. This is the whole map.</h2>
+  <table class="cmp">
+    <tr><th>Free videos</th><th>The handbook</th></tr>
+    <tr><td>One question at a time, at overview level</td><td>Every low-back topic, in a logical order</td></tr>
+    <tr><td>A single comparison</td><td>A replayable comparison library for every topic</td></tr>
+    <tr><td>One line on treatment</td><td>A balanced lesson on treatment options: exercise, medication, injections, surgery, with the evidence and uncertainty for each</td></tr>
+    <tr><td>One stat about scans</td><td>The full scan report decoder</td></tr>
+    <tr><td>One line on pain sensitivity</td><td>A whole section on why pain varies and persists</td></tr>
+    <tr><td>No downloads</td><td>Summary sheet, glossary, diary and references for every lesson</td></tr>
+    <tr><td>Watch and forget</td><td>An organised reference to come back to during flare-ups</td></tr>
+  </table>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">Is it for you?</p>
+  <h2>Built for people who want to understand.</h2>
+  <div class="who">
+    <div class="yes reveal"><h3>It's for you if</h3><ul>
+      <li>Your low-back pain keeps coming back</li>
+      <li>You have sciatica-type leg symptoms</li>
+      <li>You've been told you have spinal stenosis</li>
+      <li>You've had an MRI or X-ray and the report made no sense</li>
+      <li>You want better conversations with your doctor or physio</li>
+      <li>You're helping a family member or someone you care for</li>
+    </ul></div>
+    <div class="no reveal"><h3>It's not for you if</h3><ul>
+      <li>You want a diagnosis</li>
+      <li>You're looking for a cure</li>
+      <li>You want something to replace your clinician</li>
+      <li>You have an emergency: see below</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="offer"><div class="wrap">
+  <div class="offer reveal">
+    <div>
+      <p class="eyebrow">Founding price</p>
+      <div class="price">$39<small>one-time</small></div>
+      <ul>
+        <li>All 11 sections of The Visual Back Handbook V1</li>
+        <li>Summary sheets, glossary, scan decoder, diary and red-flag card</li>
+        <li>Lifetime access to V1, with free updates</li>
+        <li>No subscription</li>
+      </ul>
+    </div>
+    <div>
+      <a class="btn buy" id="buy" href="PAYSTACK_URL" rel="noopener">Pre-order now <span class="p">· $39</span></a>
+      <p class="note">Secure checkout by Paystack. Card, bank transfer and more.</p>
+      <div class="preorder"><b>Founding pre-order.</b> The handbook is being built now. Pre-order today at the founding price and you'll get access first, by email, the moment it opens.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">Honest limits</p>
+  <h2>What it isn't.</h2>
+  <div class="limits">
+    <div class="reveal"><b>It won't diagnose you.</b>Only a clinician who examines you can do that.</div>
+    <div class="reveal"><b>It isn't a cure.</b>It's a way to understand your back, not a treatment programme.</div>
+    <div class="reveal"><b>It doesn't replace your clinician.</b>It helps you get more out of every appointment.</div>
+  </div>
+  <div class="urgent"><b>Get urgent medical help the same day</b> if you have new numbness or tingling in the saddle area (genitals, buttocks, inner thighs), or new difficulty passing urine or loss of bladder or bowel control. UK: A&amp;E or 999 · US: emergency department or 911 · Elsewhere: your local emergency number.</div>
+</div></section>
+
+<section><div class="wrap" style="max-width:860px">
+  <p class="eyebrow">Questions</p>
+  <h2>FAQ</h2>
+  <details><summary>When do I get access?</summary><p>The handbook is in production. Founding pre-orders get access first: we'll email you at the address you use at checkout the moment it opens.</p></details>
+  <details><summary>Is it a subscription?</summary><p>No. You pay $39 once and get lifetime access to V1 of the handbook, including free updates to V1 lessons.</p></details>
+  <details><summary>Is this medical advice?</summary><p>No. It's education: it explains how the back works and what the research says, so you can understand your situation and talk to your clinician. It won't diagnose you and it isn't a cure.</p></details>
+  <details><summary>Does it tell me which exercises to do?</summary><p>No. It explains what guidelines recommend and how graded activity works in principle, and how to work with a physiotherapist. Your own plan should come from a clinician who has examined you.</p></details>
+  <details><summary>Can it help me understand my MRI report?</summary><p>Yes, that's what the scan report decoder is for. It explains what the common words mean, and how often those findings show up in people with no pain at all. Your report still needs to be interpreted by your own clinician.</p></details>
+  <details><summary>What if it's not for me?</summary><p>If the handbook isn't what you hoped, reply to your payment receipt within 30 days and you'll get a full refund, no questions asked.</p></details>
+  <details><summary>How do I pay?</summary><p>Checkout is handled securely by Paystack. You can pay by card and other methods Paystack offers in your country.</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b style="color:var(--ink)">The Visual Back Handbook</b> · Educational content only. Not a diagnosis or treatment. Always talk to a qualified clinician about your own symptoms.</p>
+  <p>© 2026 The Visual Back Handbook</p>
+</div></footer>
+
+<div class="bar"><span><b>$39</b>Founding price · one-time</span><a class="btn sm buy" href="#offer">Pre-order</a></div>
+
+<script>
+// every buy button goes straight to the Paystack page once it's set
+(function(){
+  var buy = document.getElementById('buy');
+  var url = buy.getAttribute('href');
+  if (url && url.indexOf('http') === 0) {
+    document.querySelectorAll('a.buy').forEach(function(a){ a.href = url; a.rel = 'noopener'; });
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12}) : null;
+  document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
+})();
+</script>
+</body>
+</html>
