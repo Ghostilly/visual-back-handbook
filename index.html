@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Visual Back Handbook: your back, explained in 3D</title>
-<meta name="description" content="The big ideas from the best-selling back-pain books, shown in 3D. Discs, nerves, sciatica, stenosis, scans and flare-ups, in plain words. $39 founding price, one-time.">
+<meta name="description" content="The big ideas from the best-selling back-pain books in one 3D-illustrated handbook, plus a full 3D video lesson. Discs, nerves, sciatica, stenosis, scans and flare-ups, in plain words. $39, one-time.">
 <meta property="og:title" content="The Visual Back Handbook">
 <meta property="og:description" content="Your back, explained in 3D. The big ideas from the best-selling back-pain books, in one organised library.">
 <meta property="og:image" content="img/S09_main_0145.jpg">
@@ -200,6 +200,25 @@ footer p+p{margin-top:8px}
   .chips button{padding:6px 10px;font-size:12px}
   .dots{right:12px;top:40%}
 }
+
+/* bundle + page peek */
+.bundle{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+.bitem{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;transition:transform .3s,border-color .3s}
+.bitem:hover{border-color:#2A4357}
+.bitem .bn{display:inline-block;font:700 13px Inter;color:#06222A;background:var(--cyan);border-radius:8px;padding:4px 10px;margin-bottom:12px}
+.bitem h3{font-size:18px;margin-bottom:6px}.bitem p{font-size:14.5px;color:var(--mute);line-height:1.5}
+.peek{margin-top:44px;perspective:1600px}
+.peek-track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px max(20px,calc((100vw - var(--max))/2 + 20px)) 34px;scrollbar-width:none;cursor:grab}
+.peek-track::-webkit-scrollbar{display:none}
+.pg{flex:0 0 auto;width:260px;scroll-snap-align:center;transform:rotateY(-14deg) rotateX(4deg);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s;border-radius:6px;overflow:hidden;box-shadow:-18px 24px 40px -12px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);cursor:zoom-in;background:#fff}
+.pg img{width:100%;display:block;pointer-events:auto;-webkit-user-drag:none}
+.pg:hover{transform:rotateY(0) rotateX(0) translateY(-8px) scale(1.04);box-shadow:0 30px 60px -18px rgba(0,0,0,.8),0 0 0 1px rgba(95,211,230,.4)}
+.peek-hint{text-align:center;font-size:13px;color:var(--mute)}
+.zoom{position:fixed;inset:0;z-index:50;background:rgba(5,8,11,.92);display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+.zoom.on{display:flex}.zoom img{max-height:94vh;max-width:100%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.sec{transition:transform .25s,border-color .25s}
+@media (max-width:860px){.bundle{grid-template-columns:1fr 1fr}.pg{width:200px}}
+@media (max-width:520px){.bundle{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -253,7 +272,7 @@ footer p+p{margin-top:8px}
     <article class="step" data-i="5"><div class="card">
       <p class="eyebrow">05 · Muscles</p>
       <h2>And it all moves together.</h2>
-      <p>Deep muscles like the multifidus and psoas support and move the spine. You just explored one small corner. The handbook is the whole map, in order, in 3D.</p>
+      <p>Deep muscles like the multifidus and psoas support and move the spine. You just explored one small corner. The handbook puts the whole map together, in order, in 3D.</p>
       <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
     </div></article>
   </div>
@@ -276,42 +295,50 @@ footer p+p{margin-top:8px}
   <figure class="reveal"><img src="img/S21_main_0274.jpg" alt="Two views of the lower spine and pelvis" loading="lazy"><figcaption>Side by side</figcaption></figure>
 </div></div></section>
 
-<section><div class="wrap">
-  <p class="eyebrow">What's inside</p>
-  <h2>11 sections. The whole map, in order.</h2>
-  <p class="lede">Each section starts with a short "map" lesson, then goes deeper.</p>
+<section id="inside"><div class="wrap">
+  <p class="eyebrow">What you get</p>
+  <h2>A 3D handbook, plus the videos.</h2>
+  <p class="lede">The big ideas from the best-selling back-pain books, rewritten in plain words, checked against the research and illustrated in 3D. Download it and keep it forever.</p>
+  <div class="bundle">
+    <div class="bitem reveal"><span class="bn">PDF</span><h3>The Visual Back Handbook</h3><p>28 pages · 11 chapters · illustrated with original 3D renders throughout.</p></div>
+    <div class="bitem reveal"><span class="bn">9 min</span><h3>Full 3D video lesson</h3><p>Why sitting eases some back pain and makes other back pain worse, explained inside the spine.</p></div>
+    <div class="bitem reveal"><span class="bn">3</span><h3>Bonus 3D shorts</h3><p>Is bending bad? · Why does my back hurt after lifting? · What a bulging disc really is.</p></div>
+    <div class="bitem reveal"><span class="bn">Kit</span><h3>Printable toolkit</h3><p>Scan-report decoder, symptom diary, appointment sheet, red-flag card, glossary.</p></div>
+  </div>
+</div>
+<div class="peek" aria-label="Pages from the handbook">
+  <div class="peek-track">
+    <figure class="pg"><img src="img/pages/p1.jpg" alt="Handbook cover" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p3.jpg" alt="Chapter 1: what the best-selling back books agree on" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p9.jpg" alt="Chapter 4: why position changes your symptoms" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p15.jpg" alt="Chapter 7: spinal stenosis" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p19.jpg" alt="Chapter 9: reading your scan report" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p20.jpg" alt="The scan report decoder" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p23.jpg" alt="Chapter 11: warning signs" loading="lazy"></figure>
+    <figure class="pg"><img src="img/pages/p25.jpg" alt="Symptom pattern diary" loading="lazy"></figure>
+  </div>
+  <p class="peek-hint">Drag or scroll sideways · tap a page to zoom</p>
+</div>
+<div class="wrap">
+  <h3 style="margin:46px 0 4px;font-size:22px">The 11 chapters</h3>
   <div class="secs">
-    <div class="sec reveal"><span class="n">01</span><h3>Understanding the spine</h3><p>The lumbar spine in 3D, how the pelvis and spine move together, what "normal" variation looks like.</p></div>
-    <div class="sec reveal"><span class="n">02</span><h3>Discs, nerves and muscles</h3><p>Inside a disc, nerve roots and the sciatic nerve, the muscles and ligaments around your spine.</p></div>
-    <div class="sec reveal"><span class="n">03</span><h3>Everyday back mechanics</h3><p>Why position changes symptoms, load and recovery, what stiffness is (and isn't).</p></div>
-    <div class="sec reveal"><span class="n">04</span><h3>Sitting, standing and walking</h3><p>What actually changes when you sit, stand all day, or walk with leg symptoms.</p></div>
-    <div class="sec reveal"><span class="n">05</span><h3>Bending and lifting</h3><p>Hip hinge vs rounding: what the evidence says. Lifting myths. Getting out of bed and the car.</p></div>
-    <div class="sec reveal"><span class="n">06</span><h3>Disc pain and sciatica</h3><p>Bulge, protrusion, herniation: the words explained. Why discs irritate nerves, and what usually happens over time.</p></div>
-    <div class="sec reveal"><span class="n">07</span><h3>Spinal stenosis</h3><p>What narrowing looks like, why walking and standing matter, and the treatment options explained in a balanced way.</p></div>
-    <div class="sec reveal"><span class="n">08</span><h3>Why pain varies</h3><p>Pain isn't a damage meter. Sensitivity, sleep, stress and flare-ups.</p></div>
-    <div class="sec reveal"><span class="n">09</span><h3>Common misconceptions</h3><p>"Slipped disc", "bad posture", "my scan shows degeneration", "rest until it stops hurting".</p></div>
-    <div class="sec reveal"><span class="n">10</span><h3>Activity and rehabilitation</h3><p>What guidelines recommend, how graded activity works, and working with a physiotherapist.</p></div>
-    <div class="sec reveal"><span class="n">11</span><h3>Warning signs</h3><p>Red flags in plain language, GP vs urgent care, and how to prepare for an appointment.</p></div>
+    <div class="sec reveal"><span class="n">01</span><h3>The big picture</h3><p>The three big ideas behind the best-selling back books, and the six things they all agree on.</p></div>
+    <div class="sec reveal"><span class="n">02</span><h3>Your lumbar spine in 3D</h3><p>Vertebrae, sacrum, pelvis, facet joints, the canal and the nerve exits, and what "normal" looks like.</p></div>
+    <div class="sec reveal"><span class="n">03</span><h3>Discs, nerves and muscles</h3><p>Inside a disc, how the sciatic nerve forms, and the deep muscles that support your spine.</p></div>
+    <div class="sec reveal"><span class="n">04</span><h3>Why position changes symptoms</h3><p>Sitting, standing and bending in 3D. Directional preference and centralisation explained.</p></div>
+    <div class="sec reveal"><span class="n">05</span><h3>Bending, lifting and posture</h3><p>Where the fear of bending comes from, and what studies in real people show.</p></div>
+    <div class="sec reveal"><span class="n">06</span><h3>Disc pain and sciatica</h3><p>Bulge, protrusion, herniation: the words explained, and what usually happens over time.</p></div>
+    <div class="sec reveal"><span class="n">07</span><h3>Spinal stenosis</h3><p>Why walking hurts but sitting helps, and the treatment options explained in a balanced way.</p></div>
+    <div class="sec reveal"><span class="n">08</span><h3>Why pain varies</h3><p>Pain isn't a damage meter. Sensitivity, sleep, stress, and a plan for flare-ups.</p></div>
+    <div class="sec reveal"><span class="n">09</span><h3>Reading your scan report</h3><p>15 scan words decoded, and how common they are in people with no pain at all.</p></div>
+    <div class="sec reveal"><span class="n">10</span><h3>What actually helps</h3><p>What the national guidelines recommend, and what they don't, in plain words.</p></div>
+    <div class="sec reveal"><span class="n">11</span><h3>Warning signs</h3><p>The symptoms that need urgent care, so you can relax about everything else.</p></div>
   </div>
-</div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="eyebrow">In every lesson</p>
-  <h2>More than a video you watch once.</h2>
   <div class="inc">
-    <div class="reveal"><b>The full 3D lesson</b><span>Longer and more detailed than anything on YouTube, with chapters.</span></div>
-    <div class="reveal"><b>3D comparison loops</b><span>Short side-by-side clips you can replay, like the canal bending forward vs back.</span></div>
-    <div class="reveal"><b>A one-page summary sheet</b><span>Printable PDF: key ideas, a labelled 3D image, glossary terms and sources.</span></div>
-    <div class="reveal"><b>Questions for your clinician</b><span>Take them to your doctor or physio and have a better conversation.</span></div>
-    <div class="reveal"><b>References</b><span>Every claim tagged established, likely or uncertain.</span></div>
-  </div>
-  <h3 style="margin-top:48px">Plus, for the whole library</h3>
-  <div class="inc">
-    <div class="reveal"><b>Scan report decoder</b><span>What common MRI words mean, and how often they show up in people with no pain at all.</span></div>
-    <div class="reveal"><b>Visual glossary</b><span>Around 80 terms, each with a 3D image.</span></div>
-    <div class="reveal"><b>Symptom pattern diary</b><span>Printable: sitting, standing, walking, bending, time of day.</span></div>
-    <div class="reveal"><b>Red-flag card</b><span>Printable: when to get help the same day.</span></div>
-    <div class="reveal"><b>Free updates to V1</b><span>Lessons are updated when the evidence changes.</span></div>
+    <div class="reveal"><b>"The big idea" in every chapter</b><span>The one thing to remember, in a sentence.</span></div>
+    <div class="reveal"><b>Myth vs evidence</b><span>The things you've been told, set against what the research actually shows.</span></div>
+    <div class="reveal"><b>Questions for your clinician</b><span>At the end of every chapter, so your next appointment counts.</span></div>
+    <div class="reveal"><b>Every claim tagged</b><span>Established, likely or uncertain, with 18 sources listed.</span></div>
   </div>
 </div></section>
 
@@ -320,13 +347,12 @@ footer p+p{margin-top:8px}
   <h2>Free videos answer one question. This is the whole map.</h2>
   <table class="cmp">
     <tr><th>Free videos</th><th>The handbook</th></tr>
-    <tr><td>One question at a time, at overview level</td><td>Every low-back topic, in a logical order</td></tr>
-    <tr><td>A single comparison</td><td>A replayable comparison library for every topic</td></tr>
-    <tr><td>One line on treatment</td><td>A balanced lesson on treatment options: exercise, medication, injections, surgery, with the evidence and uncertainty for each</td></tr>
-    <tr><td>One stat about scans</td><td>The full scan report decoder</td></tr>
-    <tr><td>One line on pain sensitivity</td><td>A whole section on why pain varies and persists</td></tr>
-    <tr><td>No downloads</td><td>Summary sheet, glossary, diary and references for every lesson</td></tr>
-    <tr><td>Watch and forget</td><td>An organised reference to come back to during flare-ups</td></tr>
+    <tr><td>One question at a time, in random order</td><td>Every major low-back topic, in a logical order</td></tr>
+    <tr><td>Conflicting advice from different camps</td><td>The big ideas from the best-selling books side by side, and where they agree</td></tr>
+    <tr><td>One line on treatment</td><td>What the guidelines recommend and advise against, explained in plain words</td></tr>
+    <tr><td>One stat about scans</td><td>A full scan-report decoder with pain-free comparison data</td></tr>
+    <tr><td>Nothing to take to your appointment</td><td>Questions for your clinician, an appointment sheet and a symptom diary</td></tr>
+    <tr><td>Watch and forget</td><td>A reference you keep, to come back to during flare-ups</td></tr>
   </table>
 </div></section>
 
@@ -357,16 +383,17 @@ footer p+p{margin-top:8px}
       <p class="eyebrow">Founding price</p>
       <div class="price">$39<small>one-time</small></div>
       <ul>
-        <li>All 11 sections of The Visual Back Handbook V1</li>
-        <li>Summary sheets, glossary, scan decoder, diary and red-flag card</li>
-        <li>Lifetime access to V1, with free updates</li>
-        <li>No subscription</li>
+        <li>The Visual Back Handbook: 28-page 3D-illustrated PDF</li>
+        <li>The full 9-minute 3D video lesson</li>
+        <li>3 bonus 3D shorts</li>
+        <li>Printable toolkit: scan decoder, symptom diary, appointment sheet, red-flag card</li>
+        <li>Yours to keep. No subscription.</li>
       </ul>
     </div>
     <div>
-      <a class="btn buy" id="buy" href="PAYSTACK_URL" rel="noopener">Pre-order now <span class="p">· $39</span></a>
+      <a class="btn buy" id="buy" href="PAYSTACK_URL" rel="noopener">Get instant access <span class="p">· $39</span></a>
       <p class="note">Secure checkout by Paystack. Card, bank transfer and more.</p>
-      <div class="preorder"><b>Founding pre-order.</b> The handbook is being built now. Pre-order today at the founding price and you'll get access first, by email, the moment it opens.</div>
+      <div class="preorder"><b>Instant download.</b> Pay once and download everything straight after checkout.</div>
     </div>
   </div>
 </div></section>
@@ -385,11 +412,12 @@ footer p+p{margin-top:8px}
 <section><div class="wrap" style="max-width:860px">
   <p class="eyebrow">Questions</p>
   <h2>FAQ</h2>
-  <details><summary>When do I get access?</summary><p>The handbook is in production. Founding pre-orders get access first: we'll email you at the address you use at checkout the moment it opens.</p></details>
-  <details><summary>Is it a subscription?</summary><p>No. You pay $39 once and get lifetime access to V1 of the handbook, including free updates to V1 lessons.</p></details>
+  <details><summary>When do I get access?</summary><p>Straight away. As soon as your payment goes through you're taken to your download, and your receipt is emailed to the address you used at checkout.</p></details>
+  <details><summary>Is it a subscription?</summary><p>No. You pay $39 once and download the handbook and videos. They're yours to keep.</p></details>
+  <details><summary>What format is it?</summary><p>The handbook is a PDF that works on any phone, tablet or computer, and prints well. The videos are standard MP4 files.</p></details>
   <details><summary>Is this medical advice?</summary><p>No. It's education: it explains how the back works and what the research says, so you can understand your situation and talk to your clinician. It won't diagnose you and it isn't a cure.</p></details>
   <details><summary>Does it tell me which exercises to do?</summary><p>No. It explains what guidelines recommend and how graded activity works in principle, and how to work with a physiotherapist. Your own plan should come from a clinician who has examined you.</p></details>
-  <details><summary>Can it help me understand my MRI report?</summary><p>Yes, that's what the scan report decoder is for. It explains what the common words mean, and how often those findings show up in people with no pain at all. Your report still needs to be interpreted by your own clinician.</p></details>
+  <details><summary>Can it help me understand my MRI report?</summary><p>Yes, that's what chapter 9 is for. It decodes 15 common scan words, and shows how often those findings appear in people with no pain at all. Your report still needs to be interpreted by your own clinician.</p></details>
   <details><summary>What if it's not for me?</summary><p>If the handbook isn't what you hoped, reply to your payment receipt within 30 days and you'll get a full refund, no questions asked.</p></details>
   <details><summary>How do I pay?</summary><p>Checkout is handled securely by Paystack. You can pay by card and other methods Paystack offers in your country.</p></details>
 </div></section>
@@ -399,7 +427,7 @@ footer p+p{margin-top:8px}
   <p>© 2026 The Visual Back Handbook</p>
 </div></footer>
 
-<div class="bar"><span><b>$39</b>Founding price · one-time</span><a class="btn sm buy" href="#offer">Pre-order</a></div>
+<div class="bar"><span><b>$39</b>Founding price · one-time</span><a class="btn sm buy" href="#offer">Get it now</a></div>
 
 <script>
 // every buy button goes straight to the Paystack page once it's set
@@ -415,7 +443,25 @@ footer p+p{margin-top:8px}
   document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
 })();
 </script>
+<div class="zoom" id="zoom"><img alt=""></div>
+<script>
+(function(){
+  var z=document.getElementById('zoom'), zi=z.querySelector('img'), moved=0;
+  document.querySelectorAll('.pg img').forEach(function(im){ im.addEventListener('click',function(){ if(moved>6) return; zi.src=im.src; zi.alt=im.alt; z.classList.add('on'); }); });
+  z.addEventListener('click',function(){ z.classList.remove('on'); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape') z.classList.remove('on'); });
+  var t=document.querySelector('.peek-track'), down=false, sx=0, sl=0;
+  t.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=t.scrollLeft;});
+  addEventListener('mouseup',function(){down=false;});
+  t.addEventListener('mousemove',function(e){ if(!down) return; e.preventDefault(); moved=Math.abs(e.pageX-sx); t.scrollLeft=sl-(e.pageX-sx); });
+  if(matchMedia('(hover:hover)').matches) document.querySelectorAll('.sec,.bitem').forEach(function(c){
+    c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform='perspective(700px) rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg) translateY(-3px)'; });
+    c.addEventListener('mouseleave',function(){ c.style.transform=''; });
+  });
+})();
+</script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="tour.js?v=4"></script>
+<script type="module" src="tour.js?v=5"></script>
 </body>
 </html>
