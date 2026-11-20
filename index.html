@@ -149,6 +149,57 @@ footer p+p{margin-top:8px}
   nav .btn{display:none}
   .bar{display:flex}
 }
+
+/* ---------- 3D tour ---------- */
+.tour{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;
+  background:radial-gradient(ellipse 60% 55% at 62% 50%,#16303d 0%,#0d1820 45%,var(--bg) 80%)}
+.stage::after{content:"";position:absolute;inset:auto 0 0 0;height:22%;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+#spine3d{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;opacity:0;transition:opacity 1.2s}
+#spine3d:active{cursor:grabbing}
+.stage.ready #spine3d{opacity:1}
+.stage.nogl{background:#000 url(img/S09_main_0145.jpg) 65% 50%/cover}
+.stage.nogl .hud,.stage.nogl .load{display:none}
+.load{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:14px;color:var(--mute);display:flex;align-items:center;gap:10px;transition:opacity .5s}
+.load span{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--cyan);animation:sp 1s linear infinite}
+.load.done{opacity:0;pointer-events:none}
+@keyframes sp{to{transform:rotate(1turn)}}
+.hud{position:absolute;right:24px;bottom:28px;z-index:3;text-align:right}
+.chips{display:inline-flex;gap:6px;background:rgba(10,14,19,.65);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:5px}
+.chips button{font:600 13px Inter,sans-serif;color:var(--mute);background:none;border:0;border-radius:999px;padding:7px 12px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--cyan);color:#06222A}
+.hint{font-size:12.5px;color:var(--mute);margin-top:8px;transition:opacity .6s}
+.stage.touched .hint{opacity:0}
+.dots{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:3}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);cursor:pointer;transition:all .3s}
+.dots i.on{background:var(--cyan);height:26px;border-radius:6px}
+.tip{position:absolute;z-index:4;max-width:240px;background:rgba(10,14,19,.92);border:1px solid #2A4357;border-radius:12px;padding:10px 13px;font-size:13.5px;line-height:1.45;color:var(--mute);pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.tip b{display:block;color:var(--cyan);font-size:14.5px;margin-bottom:2px}
+.tip.show{opacity:1;transform:none}
+.steps{position:relative;z-index:2;pointer-events:none}
+.step{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:90px 0}
+.step .card{pointer-events:auto;width:min(460px,92vw);margin-left:max(20px,calc((100vw - var(--max))/2 + 20px));
+  background:rgba(10,14,19,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(95,211,230,.16);border-radius:22px;padding:28px 28px 30px;
+  opacity:.25;transform:translateY(24px) scale(.98);transition:opacity .6s,transform .6s}
+.step.on .card{opacity:1;transform:none}
+.step h2{font-size:clamp(28px,3.6vw,40px);margin:8px 0 12px}
+.step p{color:var(--mute)} .step p b{color:var(--bone)}
+.step .btn{margin-top:22px}
+.eyebrow.pain{color:#F08A8D}
+.hero-step .card{width:min(600px,92vw);background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;padding-left:0}
+.hero-step h1{font-size:clamp(40px,5.6vw,68px);margin:10px 0 0}
+.hero-step h1 em{font-style:normal;color:var(--bone)}
+.hero-step .lede{margin:18px 0 28px}
+.scrollcue{color:var(--cyan);text-decoration:none}
+@media (max-width:860px){
+  .step{align-items:flex-end;padding:0 0 26px}
+  .step .card{margin:0 auto;width:calc(100vw - 32px);padding:20px 20px 22px;background:rgba(10,14,19,.8)}
+  .hero-step .card{background:linear-gradient(transparent,rgba(10,14,19,.9) 18%);padding:40px 4px 4px}
+  .hero-step .lede{font-size:16.5px;margin:12px 0 18px}
+  .hud{left:16px;right:auto;top:76px;bottom:auto;text-align:left}
+  .chips button{padding:6px 10px;font-size:12px}
+  .dots{right:12px;top:40%}
+}
 </style>
 </head>
 <body>
@@ -158,20 +209,55 @@ footer p+p{margin-top:8px}
   <a class="btn sm buy" href="#offer">Get it · $39</a>
 </div></nav>
 
-<header class="hero"><div class="wrap grid">
-  <div>
-    <p class="eyebrow">Your back, explained in 3D</p>
-    <h1>Finally <em>see</em> what's going on inside your back.</h1>
-    <p class="lede">The big ideas from the best-selling back-pain books, shown in 3D and put in order: discs, nerves, sciatica, stenosis, your scan report and why pain flares. In plain words, so it finally makes sense.</p>
-    <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
-    <p class="note">One-time payment. Founding price.</p>
-    <ul class="ticks"><li>3D lessons</li><li>Replayable comparisons</li><li>Printable summary sheets</li><li>Questions for your doctor</li></ul>
+<section class="tour" id="tour" aria-label="Explore the lower back in 3D">
+  <div class="stage" id="stage">
+    <canvas id="spine3d" aria-label="Interactive 3D model of the lower spine, discs and nerves"></canvas>
+    <div class="load" id="load"><span></span>Building your spine in 3D… <b>0%</b></div>
+    <div class="tip" id="tip"></div>
+    <div class="hud">
+      <div class="chips" role="group" aria-label="Layers">
+        <button data-g="bone" aria-pressed="true">Bones</button><button data-g="disc" aria-pressed="true">Discs</button><button data-g="nerve" aria-pressed="true">Nerves</button><button data-g="muscle" aria-pressed="true">Muscles</button>
+      </div>
+      <p class="hint">Drag to spin · tap a part to name it</p>
+    </div>
+    <nav class="dots" aria-label="Chapters"><i title="Start"></i><i title="Vertebrae"></i><i title="Discs"></i><i title="Nerve roots"></i><i title="Sciatica"></i><i title="Muscles"></i></nav>
   </div>
-  <div class="hero-art reveal">
-    <img src="img/S09_main_0145.jpg" alt="3D view of the lower spine with the discs between the vertebrae">
-    <span class="tag">Rendered for the handbook</span>
+  <div class="steps">
+    <article class="step hero-step" data-i="0"><div class="card">
+      <p class="eyebrow">Your back, explained in 3D</p>
+      <h1>Finally <em>see</em> what's going on inside your back.</h1>
+      <p class="lede">The big ideas from the best-selling back-pain books, shown in 3D and put in order: discs, nerves, sciatica, stenosis, your scan report and why pain flares. In plain words, so it finally makes sense.</p>
+      <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
+      <p class="note">One-time payment · founding price · <a href="#s1" class="scrollcue">or scroll to explore ↓</a></p>
+    </div></article>
+    <article class="step" data-i="1" id="s1"><div class="card">
+      <p class="eyebrow">01 · The lumbar spine</p>
+      <h2>Five bones carry you.</h2>
+      <p>The five lumbar vertebrae stack on the sacrum, the base of your spine, which sits inside the pelvis. Spin it. This is the part of you most back pain is about.</p>
+    </div></article>
+    <article class="step" data-i="2"><div class="card">
+      <p class="eyebrow">02 · The disc</p>
+      <h2>A tough ring around a soft centre.</h2>
+      <p>Between each pair of vertebrae sits a disc. Words like <b>bulge</b>, <b>protrusion</b> and <b>herniation</b> on a scan report describe the shape of this ring.</p>
+    </div></article>
+    <article class="step" data-i="3"><div class="card">
+      <p class="eyebrow">03 · Nerve roots</p>
+      <h2>Small gaps, sensitive nerves.</h2>
+      <p>Nerve roots leave the spine through small gaps beside each disc. When something narrows that space, a root can get irritated.</p>
+    </div></article>
+    <article class="step" data-i="4"><div class="card">
+      <p class="eyebrow pain">04 · Sciatica</p>
+      <h2>Why your back can hurt in your leg.</h2>
+      <p>Roots from the lower back join to form the sciatic nerve, which runs down the back of the leg. That's why a problem at the spine can be felt all the way down.</p>
+    </div></article>
+    <article class="step" data-i="5"><div class="card">
+      <p class="eyebrow">05 · Muscles</p>
+      <h2>And it all moves together.</h2>
+      <p>Deep muscles like the multifidus and psoas support and move the spine. You just explored one small corner. The handbook is the whole map, in order, in 3D.</p>
+      <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
+    </div></article>
   </div>
-</div></header>
+</section>
 
 <section class="alt"><div class="wrap problem">
   <div class="reveal">
@@ -329,5 +415,7 @@ footer p+p{margin-top:8px}
   document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
 })();
 </script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="tour.js"></script>
 </body>
 </html>
