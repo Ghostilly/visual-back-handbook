@@ -2,466 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Visual Back Handbook: your back, explained in 3D</title>
-<meta name="description" content="The big ideas from the best-selling back-pain books in one 3D-illustrated handbook, plus a full 3D video lesson. Discs, nerves, sciatica, stenosis, scans and flare-ups, in plain words. $39, one-time.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Visual Back Handbook — make sense of your back pain</title>
+<meta name="description" content="Back pain, conflicting advice, a confusing scan? The key ideas from best-selling back-pain books, brought together in a 3D-illustrated handbook. PDF + 4 videos + printable tools. $39 once.">
 <meta property="og:title" content="The Visual Back Handbook">
-<meta property="og:description" content="Your back, explained in 3D. The big ideas from the best-selling back-pain books, in one organised library.">
+<meta property="og:description" content="Connect the dots between your symptoms, scan terminology and conflicting advice. A 28-page visual guide + 4 videos. $39, one time.">
 <meta property="og:image" content="img/S09_main_0145.jpg">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#0a1117">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0A0E13; --bg2:#10161D; --card:#141C25; --line:#223040;
-  --ink:#EEF2F5; --mute:#9AA8B5; --bone:#F1E6D2; --cyan:#5FD3E6; --cyan2:#2BB3CB; --amber:#F5A524;
-  --r:18px; --max:1120px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.1;letter-spacing:-.01em}
-h1{font-size:clamp(38px,6.4vw,72px)}
-h2{font-size:clamp(30px,4.4vw,48px);margin-bottom:14px}
-h3{font-size:21px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:0}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
-.lede{font-size:clamp(18px,2.1vw,21px);color:var(--mute);max-width:640px}
-section{padding:88px 0}
-.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(10,14,19,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.brand{font-family:Fraunces,serif;font-weight:700;font-size:19px;text-decoration:none}
-.brand small{display:block;font:700 10px/1 Inter,sans-serif;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;margin-bottom:3px}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:#06222A;font-weight:700;font-size:17px;text-decoration:none;padding:16px 26px;border-radius:999px;transition:transform .15s,background .15s;box-shadow:0 10px 30px -10px rgba(95,211,230,.6)}
-.btn:hover{background:#7BE0F0;transform:translateY(-1px)}
-.btn.sm{padding:10px 18px;font-size:15px;box-shadow:none}
-.btn .p{opacity:.75;font-weight:600}
-.note{font-size:14px;color:var(--mute);margin-top:12px}
-
-/* hero */
-.hero{padding:56px 0 72px;position:relative;overflow:hidden}
-.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-.hero h1 em{font-style:normal;color:var(--bone)}
-.hero .lede{margin:20px 0 30px}
-.hero-art{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5}
-.hero-art img{width:100%;height:100%;object-fit:cover}
-.hero-art .tag{position:absolute;left:14px;bottom:14px;background:rgba(10,14,19,.8);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--mute)}
-.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:15px;color:var(--mute)}
-.ticks li::before{content:"✓ ";color:var(--cyan);font-weight:700}
-
-/* problem */
-.problem{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.problem img{border-radius:var(--r);border:1px solid var(--line)}
-.problem p+p{margin-top:14px}
-.problem p{color:var(--mute)}
-.problem strong{color:var(--ink)}
-
-/* gallery strip */
-.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
-.strip figure{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:1}
-.strip img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.strip figure:hover img{transform:scale(1.05)}
-.strip figcaption{display:none}
-
-/* sections list */
-.secs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:36px}
-.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 20px 22px}
-.sec .n{font:700 13px Inter;color:var(--cyan);letter-spacing:.1em}
-.sec h3{margin:6px 0 8px;font-size:18px}
-.sec p{font-size:14.5px;color:var(--mute);line-height:1.5}
-
-/* includes */
-.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px}
-.inc div{border-top:2px solid var(--cyan2);padding-top:16px}
-.inc b{display:block;font-size:17px;margin-bottom:6px}
-.inc span{font-size:15px;color:var(--mute)}
-
-/* compare table */
-.cmp{width:100%;border-collapse:separate;border-spacing:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:15.5px}
-.cmp th,.cmp td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-.cmp tr:last-child td{border-bottom:0}
-.cmp th{background:var(--card);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.cmp th:last-child{color:var(--cyan)}
-.cmp td:first-child{color:var(--mute);width:42%}
-.cmp td:last-child{color:var(--ink)}
-
-/* who */
-.who{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
-.who>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
-.who h3{margin-bottom:12px}
-.who ul{list-style:none}
-.who li{padding:7px 0 7px 28px;position:relative;color:var(--mute);font-size:15.5px}
-.who .yes li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
-.who .no li::before{content:"—";position:absolute;left:0;color:var(--mute)}
-
-/* offer */
-.offer{background:linear-gradient(160deg,#122330 0%,#0D151C 60%);border:1px solid #2A4357;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-.price{font-family:Fraunces,serif;font-size:76px;font-weight:700;line-height:1}
-.price small{font:600 17px Inter;color:var(--mute);margin-left:8px}
-.offer ul{list-style:none;margin:20px 0 0}
-.offer li{padding:6px 0 6px 28px;position:relative;font-size:16px}
-.offer li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
-.preorder{background:rgba(245,165,36,.09);border:1px solid rgba(245,165,36,.35);border-radius:14px;padding:16px 18px;font-size:15px;color:#F4D9A8;margin-top:22px}
-.preorder b{color:var(--amber)}
-
-/* limits */
-.limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:28px}
-.limits div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;font-size:15.5px;color:var(--mute)}
-.limits b{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}
-.urgent{margin-top:16px;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;font-size:15px;color:var(--mute)}
-.urgent b{color:var(--ink)}
-
-/* faq */
-details{border-bottom:1px solid var(--line);padding:18px 0}
-summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
-summary::after{content:"+";color:var(--cyan);font-size:24px;line-height:1}
-details[open] summary::after{content:"–"}
-details p{color:var(--mute);margin-top:10px;max-width:760px}
-
-footer{padding:44px 0 110px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
-footer p+p{margin-top:8px}
-
-/* sticky mobile buy bar */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(10,14,19,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px}
-.bar span{font-size:14px;color:var(--mute)} .bar b{color:var(--ink);font-size:18px;display:block}
-
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-@media (max-width:860px){
-  section{padding:64px 0}
-  .hero{padding:28px 0 52px}
-  .hero .grid,.problem,.offer,.who{grid-template-columns:1fr}
-  .hero-art{aspect-ratio:16/10}
-  .strip{grid-template-columns:repeat(2,1fr)}
-  .offer{padding:28px 22px}
-  .price{font-size:62px}
-  .cmp td,.cmp th{padding:12px 12px;font-size:14.5px}
-  nav .btn{display:none}
-  .bar{display:flex}
-}
-
-/* ---------- 3D tour ---------- */
-.tour{position:relative}
-.stage{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;
-  background:radial-gradient(ellipse 60% 55% at 62% 50%,#16303d 0%,#0d1820 45%,var(--bg) 80%)}
-.stage::after{content:"";position:absolute;inset:auto 0 0 0;height:22%;background:linear-gradient(transparent,var(--bg));pointer-events:none}
-#spine3d{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;opacity:0;transition:opacity 1.2s}
-#spine3d:active{cursor:grabbing}
-.stage.ready #spine3d{opacity:1}
-.stage.nogl{background:#000 url(img/S09_main_0145.jpg) 65% 50%/cover}
-.stage.nogl .hud,.stage.nogl .load{display:none}
-.load{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:14px;color:var(--mute);display:flex;align-items:center;gap:10px;transition:opacity .5s}
-.load span{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--cyan);animation:sp 1s linear infinite}
-.load.done{opacity:0;pointer-events:none}
-@keyframes sp{to{transform:rotate(1turn)}}
-.hud{position:absolute;right:24px;bottom:28px;z-index:3;text-align:right}
-.chips{display:inline-flex;gap:6px;background:rgba(10,14,19,.65);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:5px}
-.chips button{font:600 13px Inter,sans-serif;color:var(--mute);background:none;border:0;border-radius:999px;padding:7px 12px;cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--cyan);color:#06222A}
-.hint{font-size:12.5px;color:var(--mute);margin-top:8px;transition:opacity .6s}
-.stage.touched .hint{opacity:0}
-.dots{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:3}
-.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);cursor:pointer;transition:all .3s}
-.dots i.on{background:var(--cyan);height:26px;border-radius:6px}
-.tip{position:absolute;z-index:4;max-width:240px;background:rgba(10,14,19,.92);border:1px solid #2A4357;border-radius:12px;padding:10px 13px;font-size:13.5px;line-height:1.45;color:var(--mute);pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
-.tip b{display:block;color:var(--cyan);font-size:14.5px;margin-bottom:2px}
-.tip.show{opacity:1;transform:none}
-.steps{position:relative;z-index:2;pointer-events:none}
-.step{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:90px 0}
-.step .card{pointer-events:auto;width:min(460px,92vw);margin-left:max(20px,calc((100vw - var(--max))/2 + 20px));
-  background:rgba(10,14,19,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(95,211,230,.16);border-radius:22px;padding:28px 28px 30px;
-  opacity:.25;transform:translateY(24px) scale(.98);transition:opacity .6s,transform .6s}
-.step.on .card{opacity:1;transform:none}
-.step h2{font-size:clamp(28px,3.6vw,40px);margin:8px 0 12px}
-.step p{color:var(--mute)} .step p b{color:var(--bone)}
-.step .btn{margin-top:22px}
-.eyebrow.pain{color:#F08A8D}
-.hero-step .card{width:min(600px,92vw);background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;padding-left:0}
-.hero-step h1{font-size:clamp(40px,5.6vw,68px);margin:10px 0 0}
-.hero-step h1 em{font-style:normal;color:var(--bone)}
-.hero-step .lede{margin:18px 0 28px}
-.scrollcue{color:var(--cyan);text-decoration:none}
-@media (max-width:860px){
-  .step{align-items:flex-end;padding:0 0 26px}
-  .step .card{margin:0 auto;width:calc(100vw - 32px);padding:20px 20px 22px;background:rgba(10,14,19,.8)}
-  .hero-step .card{background:linear-gradient(transparent,rgba(10,14,19,.9) 18%);padding:40px 4px 4px}
-  .hero-step .lede{font-size:16.5px;margin:12px 0 18px}
-  .hud{left:16px;right:auto;top:76px;bottom:auto;text-align:left}
-  .chips button{padding:6px 10px;font-size:12px}
-  .dots{right:12px;top:40%}
-}
-
-/* bundle + page peek */
-.bundle{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
-.bitem{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;transition:transform .3s,border-color .3s}
-.bitem:hover{border-color:#2A4357}
-.bitem .bn{display:inline-block;font:700 13px Inter;color:#06222A;background:var(--cyan);border-radius:8px;padding:4px 10px;margin-bottom:12px}
-.bitem h3{font-size:18px;margin-bottom:6px}.bitem p{font-size:14.5px;color:var(--mute);line-height:1.5}
-.peek{margin-top:44px;perspective:1600px}
-.peek-track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px max(20px,calc((100vw - var(--max))/2 + 20px)) 34px;scrollbar-width:none;cursor:grab}
-.peek-track::-webkit-scrollbar{display:none}
-.pg{flex:0 0 auto;width:260px;scroll-snap-align:center;transform:rotateY(-14deg) rotateX(4deg);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s;border-radius:6px;overflow:hidden;box-shadow:-18px 24px 40px -12px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);cursor:zoom-in;background:#fff}
-.pg img{width:100%;display:block;pointer-events:auto;-webkit-user-drag:none}
-.pg:hover{transform:rotateY(0) rotateX(0) translateY(-8px) scale(1.04);box-shadow:0 30px 60px -18px rgba(0,0,0,.8),0 0 0 1px rgba(95,211,230,.4)}
-.peek-hint{text-align:center;font-size:13px;color:var(--mute)}
-.zoom{position:fixed;inset:0;z-index:50;background:rgba(5,8,11,.92);display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
-.zoom.on{display:flex}.zoom img{max-height:94vh;max-width:100%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.sec{transition:transform .25s,border-color .25s}
-@media (max-width:860px){.bundle{grid-template-columns:1fr 1fr}.pg{width:200px}}
-@media (max-width:520px){.bundle{grid-template-columns:1fr}}
+:root{--bg:#0a1117;--panel:#111d26;--ink:#f1f4f3;--muted:#a5b5bd;--line:#263741;--cyan:#80e0d7;--bone:#efe3cc;--max:1080px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button,a,summary{touch-action:manipulation}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--cyan);outline-offset:5px}h1,h2,h3,p{margin:0}h1,h2{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:1.08}h1{font-size:clamp(46px,5.1vw,66px)}h2{font-size:clamp(29px,3vw,40px)}h3{font-size:16px;line-height:1.4}em{font-style:normal;color:var(--bone)}img{max-width:100%;display:block}.wrap{max-width:var(--max);margin:auto;padding:0 24px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}.muted{color:var(--muted)}
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);background:rgba(10,17,23,.95);backdrop-filter:blur(16px)}.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px}.brand{font-family:Fraunces,Georgia,serif;font-size:20px;line-height:1.1;text-decoration:none}.brand small{display:block;color:var(--muted);font:600 9px/1.4 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;margin-bottom:2px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:14px 22px;border-radius:12px;background:var(--cyan);color:#092523;font-size:15px;font-weight:700;line-height:1.25;text-decoration:none;transition:background .2s,transform .2s}.btn:hover{background:#a5efe8;transform:translateY(-1px)}.btn svg{width:17px;height:17px;flex:none}.btn.small{min-height:42px;padding:11px 16px;font-size:13px;border-radius:9px}.btn .price-label{white-space:nowrap}
+.hero{padding:58px 0 44px}.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:54px}.hero h1{margin:15px 0 20px}.hero .pain{font-size:18px;line-height:1.55;color:var(--ink);max-width:450px}.hero .promise{font-size:16px;color:var(--muted);margin-top:13px;max-width:460px}.hero .actions{margin-top:26px}.hero .micro{font-size:12px;color:var(--muted);margin-top:11px}.hero .micro span{color:var(--cyan);margin-right:5px}.scene-shell{position:relative;min-width:0;overflow:hidden;border:1px solid #2b4149;border-radius:24px;background:#0d1b24;box-shadow:0 30px 80px -50px #4aa99a55}.scene-label{display:flex;align-items:center;justify-content:space-between;padding:17px 18px 0;gap:10px;font-size:11px;color:var(--muted)}.scene-label b{font-size:10px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase}.scene-label b::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--cyan);margin-right:7px}.stage{position:relative;height:410px;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#1c3d45,transparent 72%)}.stage::before{content:"";position:absolute;inset:15px 25px;background:url('img/S09_main_0145.jpg') center/contain no-repeat;opacity:.8;transition:opacity .5s}.stage.ready::before{opacity:0}.stage.nogl .load{display:none}#spine3d{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y;opacity:0;transition:opacity .5s}.stage.ready #spine3d{opacity:1}.load{position:absolute;z-index:3;bottom:5px;left:50%;transform:translateX(-50%);padding:5px 10px;border-radius:6px;background:#0a1117db;font-size:10px;color:var(--muted);white-space:nowrap}.load.done{display:none}.scene-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;margin:0 12px 10px;border:1px solid var(--line);border-radius:11px;background:#09131c}.scene-tabs button{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:600;min-height:40px;border-radius:7px;cursor:pointer}.scene-tabs button[aria-pressed=true]{background:#26453f;color:var(--cyan)}.scene-hint{text-align:center;font-size:10px;color:var(--muted);padding:0 12px 14px}.tip{position:absolute;z-index:6;width:220px;max-width:calc(100% - 20px);padding:12px;background:#0b151ff5;border:1px solid #36505b;border-radius:10px;pointer-events:none;font-size:12px;line-height:1.5;opacity:0}.tip b{display:block;color:var(--cyan);margin-bottom:3px}.tip.show{opacity:1}
+.proof{display:flex;justify-content:center;gap:12px 28px;flex-wrap:wrap;padding:21px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}.proof span::before{content:"✓";color:var(--cyan);margin-right:8px}
+.value{padding:60px 0}.value-head{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}.value h2{margin-top:10px}.value-head>p{color:var(--muted);font-size:15px;padding-top:28px}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}.benefit{border-top:1px solid var(--line);padding-top:18px}.benefit .num{font-size:10px;letter-spacing:.1em;color:var(--cyan);margin-bottom:8px}.benefit p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.6}
+.bundle-section{padding:44px 0;background:linear-gradient(135deg,#12232b,#0c171e);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.bundle-heading{display:flex;justify-content:space-between;align-items:end;gap:20px}.bundle-heading h2{margin-top:9px}.bundle-heading>p{font-size:12px;color:var(--muted)}.bundle{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:25px}.bundle-item{border-top:1px solid #355058;padding-top:16px}.bundle-item .format{color:var(--cyan);font-size:11px;font-weight:700;margin-bottom:10px;display:block}.bundle-item p{font-size:12px;color:var(--muted);margin-top:7px}.included{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.purchase{padding:48px 0}.offer{display:flex;justify-content:space-between;gap:24px;align-items:center;border:1px solid #36504e;border-radius:20px;padding:30px;background:radial-gradient(ellipse at 100% 0%,#19362f55,transparent 70%)}.offer h2{font-size:30px;margin:8px 0}.offer p{font-size:13px;color:var(--muted)}.offer-price{font-family:Fraunces,Georgia,serif;font-size:45px;line-height:1.2}.offer-price small{font:400 12px Inter,sans-serif;color:var(--muted);margin-left:9px}.offer-actions{min-width:230px}.offer-actions .btn{width:100%;margin-top:12px}.offer-actions .secure{text-align:center;font-size:10px;color:var(--muted);margin-top:8px}
+.faq{padding:0 0 44px;max-width:760px}.faq h2{font-size:27px;margin-bottom:14px}details{border-bottom:1px solid var(--line)}summary{display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;font-size:14px;font-weight:600;cursor:pointer;padding:16px 0;min-height:52px}summary::-webkit-details-marker{display:none}summary::after{content:"+";font-size:20px;color:var(--cyan);font-weight:400}details[open] summary::after{content:"−"}details p{font-size:13px;line-height:1.65;color:var(--muted);padding:0 0 16px}footer{padding:23px 0 30px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}footer .wrap{display:flex;justify-content:space-between;gap:22px}footer p{max-width:650px}.mobile-buy{display:none}
+@media(max-width:760px){.wrap{padding:0 20px}.topbar .wrap{min-height:62px}.brand{font-size:18px}.topbar .btn{padding:10px 12px;font-size:12px;min-height:44px}.hero{padding:28px 0 28px}.hero-grid{grid-template-columns:1fr;gap:24px}.hero h1{font-size:clamp(36px,10.3vw,46px);margin:10px 0 15px}.hero .pain{font-size:15px;line-height:1.5}.hero .promise{font-size:14px;line-height:1.6;margin-top:10px}.hero .actions{margin-top:19px}.hero .actions .btn{width:100%;min-height:51px}.hero .micro{text-align:center;font-size:11px;margin-top:8px}.scene-shell{border-radius:18px}.stage{height:245px}.scene-label{padding:13px 14px 0;font-size:10px}.scene-tabs{margin:0 9px 8px;padding:4px}.scene-tabs button{min-height:44px;font-size:10px}.scene-hint{padding-bottom:12px}.proof{gap:9px 18px;font-size:10px;padding:17px 4px}.value{padding:34px 0}.value-head{grid-template-columns:1fr;gap:12px}.value h2{font-size:30px;max-width:320px}.value-head>p{padding:0;font-size:14px}.benefits{grid-template-columns:1fr;gap:0;margin-top:18px}.benefit{display:grid;grid-template-columns:24px 1fr;column-gap:12px;padding:15px 0}.benefit .num{grid-row:1/3;margin:4px 0 0}.benefit h3{font-size:14px}.benefit p{font-size:12px;margin-top:4px}.bundle-section{padding:30px 0}.bundle-heading{display:block}.bundle-heading h2{font-size:29px}.bundle-heading>p{margin-top:9px;font-size:11px}.bundle{grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:23px}.bundle-item{padding-top:11px}.bundle-item h3{font-size:14px}.bundle-item .format{font-size:10px;margin-bottom:6px}.bundle-item p{font-size:12px;line-height:1.6}.included{font-size:11px;line-height:1.7;margin-top:18px;padding-top:14px}.purchase{padding:28px 0}.offer{display:block;padding:22px;border-radius:16px}.offer h2{font-size:27px}.offer p{font-size:12px}.offer-actions{min-width:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:center;margin-top:20px}.offer-price{font-size:36px}.offer-price small{display:block;margin:2px 0 0;font-size:10px}.offer-actions .btn{margin:0;padding:12px;font-size:13px;min-height:48px}.offer-actions .secure{grid-column:1/-1;margin:0}.faq{padding-bottom:28px}.faq h2{font-size:25px}.faq summary{font-size:13px}.faq details p{font-size:12px}footer{padding:20px 0 calc(105px + env(safe-area-inset-bottom,0px))}footer .wrap{display:block}footer p+p{margin-top:10px}.mobile-buy{position:fixed;inset:auto 0 0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 20px calc(11px + env(safe-area-inset-bottom,0px));background:#0b151cf5;backdrop-filter:blur(16px);border-top:1px solid #35504e;box-shadow:0 -10px 35px #0005}.mobile-buy strong{display:block;font-size:20px;line-height:1.3}.mobile-buy small{font-size:10px;color:var(--muted);white-space:nowrap}.mobile-buy .btn{min-height:48px;flex:1;max-width:245px;font-size:14px;padding:12px 16px}}
+@media(max-width:350px){.wrap{padding:0 16px}.brand{font-size:16px}.topbar .wrap{gap:10px}.topbar .btn{padding:10px;font-size:11px}.hero h1{font-size:34px}.mobile-buy{padding-left:16px;padding-right:16px;gap:10px}.mobile-buy .btn{font-size:12px}.scene-tabs button{font-size:9px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
 <body>
-
-<nav><div class="wrap">
-  <a class="brand" href="#"><small>The Visual</small>Back Handbook</a>
-  <a class="btn sm buy" href="#offer">Get it · $39</a>
-</div></nav>
-
-<section class="tour" id="tour" aria-label="Explore the lower back in 3D">
-  <div class="stage" id="stage">
-    <canvas id="spine3d" aria-label="Interactive 3D model of the lower spine, discs and nerves"></canvas>
-    <div class="load" id="load"><span></span>Building your spine in 3D… <b>0%</b></div>
-    <div class="tip" id="tip"></div>
-    <div class="hud">
-      <div class="chips" role="group" aria-label="Layers">
-        <button data-g="bone" aria-pressed="true">Bones</button><button data-g="disc" aria-pressed="true">Discs</button><button data-g="nerve" aria-pressed="true">Nerves</button><button data-g="muscle" aria-pressed="true">Muscles</button>
-      </div>
-      <p class="hint">Drag to spin · tap a part to name it</p>
-    </div>
-    <nav class="dots" aria-label="Chapters"><i title="Start"></i><i title="Vertebrae"></i><i title="Discs"></i><i title="Nerve roots"></i><i title="Sciatica"></i><i title="Muscles"></i></nav>
-  </div>
-  <div class="steps">
-    <article class="step hero-step" data-i="0"><div class="card">
-      <p class="eyebrow">Your back, explained in 3D</p>
-      <h1>Finally <em>see</em> what's going on inside your back.</h1>
-      <p class="lede">The big ideas from the best-selling back-pain books, shown in 3D and put in order: discs, nerves, sciatica, stenosis, your scan report and why pain flares. In plain words, so it finally makes sense.</p>
-      <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
-      <p class="note">One-time payment · founding price · <a href="#s1" class="scrollcue">or scroll to explore ↓</a></p>
-    </div></article>
-    <article class="step" data-i="1" id="s1"><div class="card">
-      <p class="eyebrow">01 · The lumbar spine</p>
-      <h2>Five bones carry you.</h2>
-      <p>The five lumbar vertebrae stack on the sacrum, the base of your spine, which sits inside the pelvis. Spin it. This is the part of you most back pain is about.</p>
-    </div></article>
-    <article class="step" data-i="2"><div class="card">
-      <p class="eyebrow">02 · The disc</p>
-      <h2>A tough ring around a soft centre.</h2>
-      <p>Between each pair of vertebrae sits a disc. Words like <b>bulge</b>, <b>protrusion</b> and <b>herniation</b> on a scan report describe the shape of this ring.</p>
-    </div></article>
-    <article class="step" data-i="3"><div class="card">
-      <p class="eyebrow">03 · Nerve roots</p>
-      <h2>Small gaps, sensitive nerves.</h2>
-      <p>Nerve roots leave the spine through small gaps beside each disc. When something narrows that space, a root can get irritated.</p>
-    </div></article>
-    <article class="step" data-i="4"><div class="card">
-      <p class="eyebrow pain">04 · Sciatica</p>
-      <h2>Why your back can hurt in your leg.</h2>
-      <p>Roots from the lower back join to form the sciatic nerve, which runs down the back of the leg. That's why a problem at the spine can be felt all the way down.</p>
-    </div></article>
-    <article class="step" data-i="5"><div class="card">
-      <p class="eyebrow">05 · Muscles</p>
-      <h2>And it all moves together.</h2>
-      <p>Deep muscles like the multifidus and psoas support and move the spine. You just explored one small corner. The handbook puts the whole map together, in order, in 3D.</p>
-      <a class="btn buy" href="#offer">Get the handbook <span class="p">· $39</span></a>
-    </div></article>
-  </div>
-</section>
-
-<section class="alt"><div class="wrap problem">
-  <div class="reveal">
-    <p class="eyebrow">Sound familiar?</p>
-    <h2>You've been told what's wrong. Nobody showed you.</h2>
-    <p>Maybe a scan said <strong>"disc bulge"</strong> or <strong>"degeneration"</strong>. Maybe you were told you have <strong>sciatica</strong> or <strong>spinal stenosis</strong>. Maybe sitting helps, or walking hurts, and you can't work out why.</p>
-    <p>The answers are out there, scattered across thick books and a hundred different videos. It's not your fault it doesn't add up: almost nobody gets to <strong>see</strong> it.</p>
-    <p>The Visual Back Handbook puts the whole map in one place, in order, in 3D.</p>
-  </div>
-  <img class="reveal" src="img/S05_main_0103.jpg" alt="Glass body showing the spine and pelvis inside" loading="lazy">
+<header class="topbar"><div class="wrap">
+<a class="brand" href="#top"><small>The Visual</small>Back Handbook</a>
+<a class="btn small buy" href="https://paystack.shop/pay/visual-back-handbook">Buy · $39 <span aria-hidden="true">↗</span></a>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+<div class="hero-copy">
+<p class="eyebrow">Your back. Your questions. A clearer picture.</p>
+<h1>Your back hurts.<br><em>The advice conflicts.</em></h1>
+<p class="pain">Struggling to sit through work, enjoy a walk or get comfortable at night?</p>
+<p class="promise">The key ideas from <strong>best-selling back-pain books</strong>, brought together and explained in 3D—so your scan report and conflicting advice start to make sense.</p>
+<div class="actions"><a class="btn buy" id="buy" href="https://paystack.shop/pay/visual-back-handbook" rel="noopener">Get my handbook <span class="price-label">· $39</span> <span aria-hidden="true">↗</span></a></div>
+<p class="micro"><span>✓</span> PDF + 4 videos · Instant download · Yours to keep</p>
 </div>
-<div class="wrap"><div class="strip">
-  <figure class="reveal"><img src="img/S07_main_0206.jpg" alt="A disc seen from above" loading="lazy"><figcaption>Inside a disc</figcaption></figure>
-  <figure class="reveal"><img src="img/S14_main_0155.jpg" alt="Nerves leaving the spinal canal" loading="lazy"><figcaption>Nerve roots</figcaption></figure>
-  <figure class="reveal"><img src="img/S13_ax_0124.jpg" alt="Cross-section of the spinal canal" loading="lazy"><figcaption>The canal</figcaption></figure>
-  <figure class="reveal"><img src="img/S21_main_0274.jpg" alt="Two views of the lower spine and pelvis" loading="lazy"><figcaption>Side by side</figcaption></figure>
+<div class="scene-shell" aria-label="Interactive 3D preview of the lower spine">
+<div class="scene-label"><b>Explore in 3D</b><span>A glimpse inside the guide</span></div>
+<div class="stage" id="stage">
+<canvas id="spine3d" aria-label="Interactive 3D spine — drag to rotate, tap a part to name it"></canvas>
+<div class="load" id="load">Loading 3D preview… <b>0%</b></div><div class="tip" id="tip" role="status"></div>
+</div>
+<div class="scene-tabs" role="group" aria-label="Choose a 3D view">
+<button type="button" data-scene="0" aria-pressed="true">Whole spine</button><button type="button" data-scene="2" aria-pressed="false">Discs</button><button type="button" data-scene="3" aria-pressed="false">Nerves</button><button type="button" data-scene="4" aria-pressed="false">Leg pain</button>
+</div>
+<p class="scene-hint">Drag to rotate · tap a part to name it</p>
+</div>
+</div></section>
+<div class="wrap"><div class="proof"><span>28 illustrated pages</span><span>11 chapters</span><span>18 sources</span></div></div>
+<section class="value"><div class="wrap">
+<div class="value-head"><div><p class="eyebrow">Stop piecing it together alone</p><h2>Connect the dots.</h2></div><p>The different approaches, compared side by side and checked against research. See where they agree—and what's still uncertain.</p></div>
+<div class="benefits">
+<div class="benefit"><p class="num">01</p><h3>See what the words mean.</h3><p>Disc bulges, sciatica, stenosis: follow the anatomy behind the terms you've heard.</p></div>
+<div class="benefit"><p class="num">02</p><h3>Put your scan in context.</h3><p>Decode 15 common scan terms and understand the questions worth asking about your report.</p></div>
+<div class="benefit"><p class="num">03</p><h3>Make your next appointment count.</h3><p>Record your symptoms and bring focused questions to your doctor or physiotherapist.</p></div>
 </div></div></section>
-
-<section id="inside"><div class="wrap">
-  <p class="eyebrow">What you get</p>
-  <h2>A 3D handbook, plus the videos.</h2>
-  <p class="lede">The big ideas from the best-selling back-pain books, rewritten in plain words, checked against the research and illustrated in 3D. Download it and keep it forever.</p>
-  <div class="bundle">
-    <div class="bitem reveal"><span class="bn">PDF</span><h3>The Visual Back Handbook</h3><p>28 pages · 11 chapters · illustrated with original 3D renders throughout.</p></div>
-    <div class="bitem reveal"><span class="bn">9 min</span><h3>Full 3D video lesson</h3><p>Why sitting eases some back pain and makes other back pain worse, explained inside the spine.</p></div>
-    <div class="bitem reveal"><span class="bn">3</span><h3>Bonus 3D shorts</h3><p>Is bending bad? · Why does my back hurt after lifting? · What a bulging disc really is.</p></div>
-    <div class="bitem reveal"><span class="bn">Kit</span><h3>Printable toolkit</h3><p>Scan-report decoder, symptom diary, appointment sheet, red-flag card, glossary.</p></div>
-  </div>
+<section class="bundle-section" id="bundle"><div class="wrap">
+<div class="bundle-heading"><div><p class="eyebrow">One purchase. The whole bundle.</p><h2>Your complete $39 bundle.</h2></div><p>Download to your phone, tablet or computer.</p></div>
+<div class="bundle">
+<div class="bundle-item"><span class="format">28-PAGE PDF</span><h3>The illustrated handbook</h3><p>11 chapters on your spine, symptoms, scan reports and care options.</p></div>
+<div class="bundle-item"><span class="format">9-MINUTE VIDEO</span><h3>The full 3D lesson</h3><p>Why sitting helps some backs and hurts others, shown inside the spine.</p></div>
+<div class="bundle-item"><span class="format">3 BONUS VIDEOS</span><h3>The everyday questions</h3><p>Bending, pain after lifting, and what a disc bulge actually means.</p></div>
+<div class="bundle-item"><span class="format">PRINTABLE TOOLS</span><h3>Ready for your appointment</h3><p>A symptom diary, appointment sheet and warning-sign card inside the PDF.</p></div>
 </div>
-<div class="peek" aria-label="Pages from the handbook">
-  <div class="peek-track">
-    <figure class="pg"><img src="img/pages/p1.jpg" alt="Handbook cover" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p3.jpg" alt="Chapter 1: what the best-selling back books agree on" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p9.jpg" alt="Chapter 4: why position changes your symptoms" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p15.jpg" alt="Chapter 7: spinal stenosis" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p19.jpg" alt="Chapter 9: reading your scan report" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p20.jpg" alt="The scan report decoder" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p23.jpg" alt="Chapter 11: warning signs" loading="lazy"></figure>
-    <figure class="pg"><img src="img/pages/p25.jpg" alt="Symptom pattern diary" loading="lazy"></figure>
-  </div>
-  <p class="peek-hint">Drag or scroll sideways · tap a page to zoom</p>
-</div>
-<div class="wrap">
-  <h3 style="margin:46px 0 4px;font-size:22px">The 11 chapters</h3>
-  <div class="secs">
-    <div class="sec reveal"><span class="n">01</span><h3>The big picture</h3><p>The three big ideas behind the best-selling back books, and the six things they all agree on.</p></div>
-    <div class="sec reveal"><span class="n">02</span><h3>Your lumbar spine in 3D</h3><p>Vertebrae, sacrum, pelvis, facet joints, the canal and the nerve exits, and what "normal" looks like.</p></div>
-    <div class="sec reveal"><span class="n">03</span><h3>Discs, nerves and muscles</h3><p>Inside a disc, how the sciatic nerve forms, and the deep muscles that support your spine.</p></div>
-    <div class="sec reveal"><span class="n">04</span><h3>Why position changes symptoms</h3><p>Sitting, standing and bending in 3D. Directional preference and centralisation explained.</p></div>
-    <div class="sec reveal"><span class="n">05</span><h3>Bending, lifting and posture</h3><p>Where the fear of bending comes from, and what studies in real people show.</p></div>
-    <div class="sec reveal"><span class="n">06</span><h3>Disc pain and sciatica</h3><p>Bulge, protrusion, herniation: the words explained, and what usually happens over time.</p></div>
-    <div class="sec reveal"><span class="n">07</span><h3>Spinal stenosis</h3><p>Why walking hurts but sitting helps, and the treatment options explained in a balanced way.</p></div>
-    <div class="sec reveal"><span class="n">08</span><h3>Why pain varies</h3><p>Pain isn't a damage meter. Sensitivity, sleep, stress, and a plan for flare-ups.</p></div>
-    <div class="sec reveal"><span class="n">09</span><h3>Reading your scan report</h3><p>15 scan words decoded, and how common they are in people with no pain at all.</p></div>
-    <div class="sec reveal"><span class="n">10</span><h3>What actually helps</h3><p>What the national guidelines recommend, and what they don't, in plain words.</p></div>
-    <div class="sec reveal"><span class="n">11</span><h3>Warning signs</h3><p>The symptoms that need urgent care, so you can relax about everything else.</p></div>
-  </div>
-  <div class="inc">
-    <div class="reveal"><b>"The big idea" in every chapter</b><span>The one thing to remember, in a sentence.</span></div>
-    <div class="reveal"><b>Myth vs evidence</b><span>The things you've been told, set against what the research actually shows.</span></div>
-    <div class="reveal"><b>Questions for your clinician</b><span>At the end of every chapter, so your next appointment counts.</span></div>
-    <div class="reveal"><b>Every claim tagged</b><span>Established, likely or uncertain, with 18 sources listed.</span></div>
-  </div>
+<p class="included">Also inside: scan-report decoder, glossary, clinician questions and sources. Key claims marked established, likely or uncertain.</p>
 </div></section>
-
-<section><div class="wrap">
-  <p class="eyebrow">Why not just watch YouTube?</p>
-  <h2>Free videos answer one question. This is the whole map.</h2>
-  <table class="cmp">
-    <tr><th>Free videos</th><th>The handbook</th></tr>
-    <tr><td>One question at a time, in random order</td><td>Every major low-back topic, in a logical order</td></tr>
-    <tr><td>Conflicting advice from different camps</td><td>The big ideas from the best-selling books side by side, and where they agree</td></tr>
-    <tr><td>One line on treatment</td><td>What the guidelines recommend and advise against, explained in plain words</td></tr>
-    <tr><td>One stat about scans</td><td>A full scan-report decoder with pain-free comparison data</td></tr>
-    <tr><td>Nothing to take to your appointment</td><td>Questions for your clinician, an appointment sheet and a symptom diary</td></tr>
-    <tr><td>Watch and forget</td><td>A reference you keep, to come back to during flare-ups</td></tr>
-  </table>
-</div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="eyebrow">Is it for you?</p>
-  <h2>Built for people who want to understand.</h2>
-  <div class="who">
-    <div class="yes reveal"><h3>It's for you if</h3><ul>
-      <li>Your low-back pain keeps coming back</li>
-      <li>You have sciatica-type leg symptoms</li>
-      <li>You've been told you have spinal stenosis</li>
-      <li>You've had an MRI or X-ray and the report made no sense</li>
-      <li>You want better conversations with your doctor or physio</li>
-      <li>You're helping a family member or someone you care for</li>
-    </ul></div>
-    <div class="no reveal"><h3>It's not for you if</h3><ul>
-      <li>You want a diagnosis</li>
-      <li>You're looking for a cure</li>
-      <li>You want something to replace your clinician</li>
-      <li>You have an emergency: see below</li>
-    </ul></div>
-  </div>
-</div></section>
-
-<section id="offer"><div class="wrap">
-  <div class="offer reveal">
-    <div>
-      <p class="eyebrow">Founding price</p>
-      <div class="price">$39<small>one-time</small></div>
-      <ul>
-        <li>The Visual Back Handbook: 28-page 3D-illustrated PDF</li>
-        <li>The full 9-minute 3D video lesson</li>
-        <li>3 bonus 3D shorts</li>
-        <li>Printable toolkit: scan decoder, symptom diary, appointment sheet, red-flag card</li>
-        <li>Yours to keep. No subscription.</li>
-      </ul>
-    </div>
-    <div>
-      <a class="btn buy" id="buy" href="https://paystack.shop/pay/visual-back-handbook" rel="noopener">Get instant access <span class="p">· $39</span></a>
-      <p class="note">Secure checkout by Paystack. Card, bank transfer and more.</p>
-      <div class="preorder"><b>Instant download.</b> Pay once and download everything straight after checkout.</div>
-    </div>
-  </div>
-</div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="eyebrow">Honest limits</p>
-  <h2>What it isn't.</h2>
-  <div class="limits">
-    <div class="reveal"><b>It won't diagnose you.</b>Only a clinician who examines you can do that.</div>
-    <div class="reveal"><b>It isn't a cure.</b>It's a way to understand your back, not a treatment programme.</div>
-    <div class="reveal"><b>It doesn't replace your clinician.</b>It helps you get more out of every appointment.</div>
-  </div>
-  <div class="urgent"><b>Get urgent medical help the same day</b> if you have new numbness or tingling in the saddle area (genitals, buttocks, inner thighs), or new difficulty passing urine or loss of bladder or bowel control. UK: A&amp;E or 999 · US: emergency department or 911 · Elsewhere: your local emergency number.</div>
-</div></section>
-
-<section><div class="wrap" style="max-width:860px">
-  <p class="eyebrow">Questions</p>
-  <h2>FAQ</h2>
-  <details><summary>When do I get access?</summary><p>Straight away. As soon as your payment goes through you're taken to your download, and your receipt is emailed to the address you used at checkout.</p></details>
-  <details><summary>Is it a subscription?</summary><p>No. You pay $39 once and download the handbook and videos. They're yours to keep.</p></details>
-  <details><summary>What format is it?</summary><p>The handbook is a PDF that works on any phone, tablet or computer, and prints well. The videos are standard MP4 files.</p></details>
-  <details><summary>Is this medical advice?</summary><p>No. It's education: it explains how the back works and what the research says, so you can understand your situation and talk to your clinician. It won't diagnose you and it isn't a cure.</p></details>
-  <details><summary>Does it tell me which exercises to do?</summary><p>No. It explains what guidelines recommend and how graded activity works in principle, and how to work with a physiotherapist. Your own plan should come from a clinician who has examined you.</p></details>
-  <details><summary>Can it help me understand my MRI report?</summary><p>Yes, that's what chapter 9 is for. It decodes 15 common scan words, and shows how often those findings appear in people with no pain at all. Your report still needs to be interpreted by your own clinician.</p></details>
-  <details><summary>What if it's not for me?</summary><p>If the handbook isn't what you hoped, reply to your payment receipt within 30 days and you'll get a full refund, no questions asked.</p></details>
-  <details><summary>How do I pay?</summary><p>Checkout is handled securely by Paystack. You can pay by card and other methods Paystack offers in your country.</p></details>
-</div></section>
-
-<footer><div class="wrap">
-  <p><b style="color:var(--ink)">The Visual Back Handbook</b> · Educational content only. Not a diagnosis or treatment. Always talk to a qualified clinician about your own symptoms.</p>
-  <p>© 2026 The Visual Back Handbook</p>
-</div></footer>
-
-<div class="bar"><span><b>$39</b>Founding price · one-time</span><a class="btn sm buy" href="#offer">Get it now</a></div>
-
-<script>
-// every buy button goes straight to the Paystack page once it's set
-(function(){
-  var buy = document.getElementById('buy');
-  var url = buy.getAttribute('href');
-  if (url && url.indexOf('http') === 0) {
-    document.querySelectorAll('a.buy').forEach(function(a){ a.href = url; a.rel = 'noopener'; });
-  }
-  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
-    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.12}) : null;
-  document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
-})();
-</script>
-<div class="zoom" id="zoom"><img alt=""></div>
+<section class="purchase" id="offer"><div class="wrap"><div class="offer">
+<div><p class="eyebrow">Less confusion. Better questions.</p><h2>Make it make sense.</h2><p>Your handbook. Your videos. Yours to keep.</p></div>
+<div class="offer-actions"><div class="offer-price">$39<small>one-time payment</small></div><a class="btn buy" href="https://paystack.shop/pay/visual-back-handbook">Get instant access <span aria-hidden="true">↗</span></a><p class="secure">Secure payment with Paystack · Instant download</p></div>
+</div></div></section>
+<section class="faq wrap" aria-label="Frequently asked questions"><h2>A few things to know.</h2>
+<details><summary>How do I download it?</summary><p>After payment, the Paystack confirmation shows your download link. Open it to download the PDF and four MP4 videos. Keep them on your device and revisit them whenever you need.</p></details>
+<details><summary>Is this medical advice?</summary><p>It helps you understand the anatomy, scan terminology and different explanations for back pain. It's education, not a diagnosis, cure or personalised exercise plan. Your own symptoms and scan need to be assessed by your clinician.</p></details>
+<details><summary>What if it isn't for me?</summary><p>Reply to your payment receipt within 30 days for a full refund, no questions asked.</p></details>
+<details><summary>When should I get urgent medical help?</summary><p>Get urgent medical help the same day if you have new numbness or tingling in the saddle area (genitals, buttocks, inner thighs), or new difficulty passing urine or loss of bladder or bowel control. UK: A&amp;E or 999 · US: emergency department or 911 · Elsewhere: your local emergency number.</p></details>
+</section>
+</main>
+<footer><div class="wrap"><p>The Visual Back Handbook · Educational content only. Not a diagnosis or treatment. Always talk to a qualified clinician about your own symptoms.</p><p>© 2026</p></div></footer>
+<aside class="mobile-buy" aria-label="Purchase the handbook"><div><strong>$39</strong><small>Once. Yours to keep.</small></div><a class="btn buy" href="https://paystack.shop/pay/visual-back-handbook">Get my handbook <span aria-hidden="true">↗</span></a></aside>
 <script>
 (function(){
-  var z=document.getElementById('zoom'), zi=z.querySelector('img'), moved=0;
-  document.querySelectorAll('.pg img').forEach(function(im){ im.addEventListener('click',function(){ if(moved>6) return; zi.src=im.src; zi.alt=im.alt; z.classList.add('on'); }); });
-  z.addEventListener('click',function(){ z.classList.remove('on'); });
-  addEventListener('keydown',function(e){ if(e.key==='Escape') z.classList.remove('on'); });
-  var t=document.querySelector('.peek-track'), down=false, sx=0, sl=0;
-  t.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=t.scrollLeft;});
-  addEventListener('mouseup',function(){down=false;});
-  t.addEventListener('mousemove',function(e){ if(!down) return; e.preventDefault(); moved=Math.abs(e.pageX-sx); t.scrollLeft=sl-(e.pageX-sx); });
-  if(matchMedia('(hover:hover)').matches) document.querySelectorAll('.sec,.bitem').forEach(function(c){
-    c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      c.style.transform='perspective(700px) rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg) translateY(-3px)'; });
-    c.addEventListener('mouseleave',function(){ c.style.transform=''; });
-  });
+const url=document.getElementById('buy').getAttribute('href');
+document.querySelectorAll('a.buy').forEach(a=>{a.href=url;a.rel='noopener';});
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="tour.js?v=5"></script>
+<script type="module" src="tour.js?v=7"></script>
 </body>
 </html>

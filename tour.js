@@ -1,4 +1,4 @@
-// Interactive 3D spine for the landing page: scroll moves the camera through the anatomy,
+// Interactive 3D spine preview: buttons select the anatomy view,
 // drag spins the model, tap a part to name it, chips switch layers on and off.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -9,14 +9,14 @@ const stage = document.getElementById('stage');
 const canvas = document.getElementById('spine3d');
 const loadEl = document.getElementById('load');
 const tip = document.getElementById('tip');
-const steps = [...document.querySelectorAll('.step')];
+const viewButtons = [...document.querySelectorAll('[data-scene]')];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let renderer;
 try {
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
 } catch (e) { stage.classList.add('nogl'); throw e; }
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio, matchMedia('(max-width: 760px)').matches ? 1.5 : 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
@@ -113,7 +113,6 @@ new GLTFLoader().setDRACOLoader(draco).load('model/spine.glb?v=4', gltf => {
   BOX.disc = box(p => p.name === 'DISC_L4L5');
   BOX.roots = box(p => /^(ROOT_L[45]|ROOT_S1|DRG_L[45])/.test(p.name) || p.name === 'DISC_L4L5');
   BOX.legs = box(p => /^(SCIATIC_|SACRUM|PELVIS|FEMUR_)/.test(p.name));
-  window.__tour = { step: () => curStep };
   loadEl.classList.add('done');
   stage.classList.add('ready');
   resize(); goTo(curStep, true);
@@ -125,7 +124,7 @@ const camPos = new THREE.Vector3(0, 0, 3), camTgt = new THREE.Vector3(), wantPos
 let curStep = 0;
 function framing(i) {
   const ch = CH[i], b = BOX[ch.look]; if (!b) return;
-  const s = b.getSize(new THREE.Vector3()), c = b.getCenter(new THREE.Vector3());
+  const s = b.getSize(new THREE.Vector3()), c = b.getCenter(new THREE.Vector3()).applyEuler(spin.rotation);
   const r = Math.max(s.x, s.y, s.z) * 0.5 * ch.fit;
   const fov = THREE.MathUtils.degToRad(camera.fov);
   const fitH = r / Math.tan(fov / 2), fitW = r / (Math.tan(fov / 2) * camera.aspect);
@@ -136,18 +135,13 @@ function framing(i) {
 }
 function goTo(i, snap) {
   curStep = i; framing(i);
-  steps.forEach((s, k) => s.classList.toggle('on', k === i));
-  document.querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === i));
+  viewButtons.forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.scene === i)));
   if (snap) { camPos.copy(wantPos); camTgt.copy(wantTgt); }
   tip.classList.remove('show');
 }
 
-// scroll picks the chapter whose card is nearest the viewport middle
-const io = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) goTo(+e.target.dataset.i); });
-}, { rootMargin: '-45% 0px -45% 0px' });
-steps.forEach(s => io.observe(s));
-document.querySelectorAll('.dots i').forEach((d, k) => d.addEventListener('click', () => steps[k].scrollIntoView({ behavior: 'smooth', block: 'center' })));
+// Select the preview directly; page scrolling stays independent of the 3D view.
+viewButtons.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.scene)));
 
 // ---- drag to spin (horizontal only, so the page still scrolls on phones) ----
 let yaw = 0, pitch = 0, vYaw = reduce ? 0 : 0.0025, dragging = false, lx = 0, ly = 0, moved = 0, idle = 0;
@@ -173,8 +167,8 @@ function pick(e) {
   if (!hits.length) { tip.classList.remove('show'); picked = null; return; }
   const p = parts.find(q => q.mesh === hits[0].object); const nm = nameFor(p.name); if (!nm) return;
   picked = p; tip.innerHTML = `<b>${nm[0]}</b>${nm[1]}`;
-  tip.style.left = Math.min(r.width - 250, Math.max(10, e.clientX - r.left + 14)) + 'px';
-  tip.style.top = Math.max(10, e.clientY - r.top - 20) + 'px';
+  tip.style.left = Math.min(r.width - 230, Math.max(10, e.clientX - r.left + 14)) + 'px';
+  tip.style.top = Math.min(r.height - 120, Math.max(10, e.clientY - r.top - 20)) + 'px';
   tip.classList.add('show');
 }
 
@@ -188,11 +182,10 @@ document.querySelectorAll('.chips button').forEach(b => b.addEventListener('clic
 function resize() {
   const w = stage.clientWidth, h = stage.clientHeight;
   renderer.setSize(w, h, false); camera.aspect = w / h;
-  // desktop: the copy is on the left, so push the model right; phone: the copy is at the bottom, so lift the model
-  if (w >= 860) camera.setViewOffset(w, h, -w * 0.17, 0, w, h); else camera.setViewOffset(w, h, 0, h * 0.17, w, h);
+  camera.clearViewOffset();
   camera.updateProjectionMatrix(); framing(curStep);
 }
-addEventListener('resize', resize);
+new ResizeObserver(resize).observe(stage);
 const clock = new THREE.Clock(); let visible = true;
 new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(stage);
 renderer.setAnimationLoop(() => {
@@ -201,6 +194,7 @@ renderer.setAnimationLoop(() => {
   idle += dt;
   if (!dragging) { vYaw *= 0.95; if (!reduce && idle > 2.5) vYaw += (0.0022 - vYaw) * 0.02; yaw += vYaw; }
   spin.rotation.y = yaw; spin.rotation.x += (pitch - spin.rotation.x) * 0.1;
+  framing(curStep);
   const k = 1 - Math.pow(0.0015, dt);
   camPos.lerp(wantPos, k); camTgt.lerp(wantTgt, k);
   camera.position.copy(camPos); camera.lookAt(camTgt);
