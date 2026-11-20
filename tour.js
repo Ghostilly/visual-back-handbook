@@ -39,7 +39,7 @@ const LOOK = {
   muscle: { color: 0xd98ca6, roughness: .5, metalness: 0, transparent: true, sheen: 1, sheenColor: 0xffc2d4 },
 };
 const groupOf = n =>
-  /^(V_|SACRUM|PELVIS)/.test(n) ? 'bone' : /^DISC_/.test(n) ? 'disc' : /^NUC_/.test(n) ? 'nuc'
+  /^(V_|SACRUM|PELVIS|FEMUR_)/.test(n) ? 'bone' : /^DISC_/.test(n) ? 'disc' : /^NUC_/.test(n) ? 'nuc'
   : /^(ROOT_|SCIATIC_|DRG_|CAUDA_)/.test(n) ? 'nerve' : /^M_/.test(n) ? 'muscle' : null;
 
 const NAMES = {
@@ -48,6 +48,7 @@ const NAMES = {
   V_L3: ['L3 vertebra', 'One of the five lumbar vertebrae.'], V_L4: ['L4 vertebra', 'One of the two lowest lumbar vertebrae, where many scan findings are reported.'],
   V_L5: ['L5 vertebra', 'The lowest lumbar vertebra, resting on the sacrum.'],
   SACRUM: ['Sacrum', 'The triangular bone at the base of the spine, wedged into the pelvis.'],
+  FEMUR: ['Thigh bone (femur)', 'The sciatic nerve runs down behind it, towards the knee.'],
   PELVIS: ['Pelvis', 'The pelvis and spine move together when you bend, sit and walk.'],
   DISC: ['Intervertebral disc', 'A tough outer ring around a soft centre, between two vertebrae.'],
   NUC: ['Disc centre (nucleus)', 'The soft, gel-like centre of the disc.'],
@@ -103,19 +104,20 @@ new GLTFLoader().setDRACOLoader(draco).load('model/spine.glb', gltf => {
   spin.add(root);
   root.updateMatrixWorld(true);
   const box = sel => { const b = new THREE.Box3(); parts.filter(sel).forEach(p => b.expandByObject(p.mesh)); return b; };
-  const spineB = box(p => p.group === 'bone' && p.name !== 'PELVIS');
+  const spineB = box(p => p.group === 'bone' && !/^(PELVIS|FEMUR_)/.test(p.name));
   const c = spineB.getCenter(new THREE.Vector3());
   root.position.sub(c);                          // spin around the spine's own centre
   root.updateMatrixWorld(true);
-  BOX.spine = box(p => p.group === 'bone');
+  BOX.spine = box(p => p.group === 'bone' && !/^FEMUR_/.test(p.name));
   BOX.lumbar = box(p => /^V_/.test(p.name));
   BOX.disc = box(p => p.name === 'DISC_L4L5');
   BOX.roots = box(p => /^(ROOT_L[45]|ROOT_S1|DRG_L[45])/.test(p.name) || p.name === 'DISC_L4L5');
-  BOX.legs = box(p => /^(SCIATIC_|SACRUM|PELVIS)/.test(p.name));
+  BOX.legs = box(p => /^(SCIATIC_|SACRUM|PELVIS|FEMUR_)/.test(p.name));
+  window.__tour = { step: () => curStep };
   loadEl.classList.add('done');
   stage.classList.add('ready');
   resize(); goTo(curStep, true);
-}, xhr => { if (xhr.total) loadEl.querySelector('b').textContent = Math.round(xhr.loaded / xhr.total * 100) + '%'; },
+}, xhr => { if (xhr.total) loadEl.querySelector('b').textContent = Math.min(99, Math.round(xhr.loaded / xhr.total * 100)) + '%'; },
 () => { stage.classList.add('nogl'); });
 
 // ---- camera rig: eased toward the current chapter ----
@@ -205,6 +207,7 @@ renderer.setAnimationLoop(() => {
   const ch = CH[curStep], pain = ch.pain ? 0.5 + 0.5 * Math.sin(t * 4.2) : 0;
   for (const p of parts) {
     let want = (ch.show[p.group] ?? 1) * layerOn[p.group];
+    if (/^FEMUR_/.test(p.name)) want = ch.pain ? want : 0;
     p.op += (want - p.op) * k;
     p.mesh.visible = p.op > 0.02;
     p.mat.opacity = p.group === 'disc' ? Math.min(p.op, .92) : p.op;
