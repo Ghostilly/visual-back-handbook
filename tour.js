@@ -90,7 +90,7 @@ const CH = [
 const layerOn = { bone: 1, disc: 1, nuc: 1, nerve: 1, muscle: 1 };
 
 const draco = new DRACOLoader().setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/gltf/');
-new GLTFLoader().setDRACOLoader(draco).load('model/spine.glb', gltf => {
+new GLTFLoader().setDRACOLoader(draco).load('model/spine.glb?v=4', gltf => {
   const root = gltf.scene;
   root.traverse(o => {
     if (!o.isMesh) return;
